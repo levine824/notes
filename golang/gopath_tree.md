@@ -4,12 +4,12 @@
 
 ## **适合个人开发者**
 
-![img](D:\projects\github\notes\notes\assets\gopath_1.png)
+![img](..\assets\gopath_1.png)
 
 ## **适合企业开发者**
 
-![img](D:\projects\github\notes\notes\assets\gopath_2.png)
+![img](..\assets\gopath_2.png)
 
 ## **目前流行结构**
 
-![img](D:\projects\github\notes\notes\assets\gopath__3.png)
+![img](..\assets\gopath__3.png)
