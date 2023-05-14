@@ -14,7 +14,7 @@
 
 - 依赖包全都下载到项目 vendor 下，每个项目都把有一份。
 
-因此，golang 1.11后新加特性 go modules。
+因此，golang 1.11 后新加特性 go modules。
 
 Modules官方定义为：
 
@@ -22,7 +22,7 @@ Modules官方定义为：
 
 ## 安装
 
-首先， 安装go 版本必须大于1.11，安装过程可参照官网，此处不再赘述。
+首先， 安装 go 版本必须大于 1.11，安装过程可参照官网，此处不再赘述。
 
 **查看 go 版本**
 
@@ -61,11 +61,11 @@ Usage:
 The commands are:
 
     download    download modules to local cache（下载依赖包）
-    edit        edit go.mod from tools or scripts（编辑go.mod）
+    edit        edit go.mod from tools or scripts（编辑 go.mod）
     graph       print module requirement graph（打印模块依赖图）
-    init        initialize new module in current directory（再当前目录初始化mod）
+    init        initialize new module in current directory（再当前目录初始化 mod）
     tidy        add missing and remove unused modules（拉取缺少模块，移除不用的模块）
-    vendor      make vendored copy of dependencies（将依赖复制vender下）
+    vendor      make vendored copy of dependencies（将依赖复制 vender 下）
     verify      verify dependencies have expected content（验证依赖正确性）
     why         explain why packages or modules are needed（解释依赖）
 ```
@@ -244,7 +244,7 @@ require (
 
 ```shell
 git commit xxx.go -m "xxx"
-git checkout -b v2 # 用于v2版本，后续修复v2
+git checkout -b v2 # 用于 v2 版本，后续修复 v2
 git commit go.mod -m "Bump version to v2"
 git tag v2.0.0
 git push --tags origin v2 

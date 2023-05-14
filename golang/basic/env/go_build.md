@@ -36,15 +36,15 @@ go build github.com/ourlang/noutil/...
 -i
    install 安装作为目标的依赖关系的包(用于增量编译提速)
 -a
-    完全编译，不理会-i产生的.a文件(文件会比不带-a的编译出来要大？)
+    完全编译，不理会 -i 产生的 .a 文件(文件会比不带 -a 的编译出来要大？)
 -n
-    仅打印输出build需要的命令，不执行build动作（少用）
+    仅打印输出 build 需要的命令，不执行 build 动作（少用）
 -p n
-    开多少核cpu来并行编译，默认为本机CPU核数（少用）
+    开多少核 cpu 来并行编译，默认为本机 CPU 核数（少用）
 -race
-    同时检测数据竞争状态，只支持 linux/amd64, freebsd/amd64, darwin/amd64 和 windows/amd64.
+    同时检测数据竞争状态，只支持 linux/amd64, freebsd/amd64, darwin/amd64 和 windows/amd64
 -msan
-    启用与内存消毒器的互操作。仅支持linux / amd64，并且只用Clang / LLVM作为主机C编译器（少用）。
+    启用与内存消毒器的互操作。仅支持 linux/amd64，并且只用 Clang/LLVM 作为主机 C 编译器（少用）
 -v
     打印出被编译的包名（少用）
 -work
@@ -52,7 +52,7 @@ go build github.com/ourlang/noutil/...
 -x
     同时打印输出执行的命令名（-n）（少用）
 -asmflags 'flag list'
-    传递每个go工具asm调用的参数（少用）
+    传递每个 go 工具 asm 调用的参数（少用）
 -buildmode mode
     编译模式（少用）
     'go help buildmode'
@@ -66,14 +66,14 @@ go build github.com/ourlang/noutil/...
 -ldflags 'flag list'
     '-s -w': 压缩编译后的体积
     -s: 去掉符号表
-    -w: 去掉调试信息，不能gdb调试了
+    -w: 去掉调试信息，不能 gdb 调试了
 -linkshared
     链接到以前使用创建的共享库
     -buildmode=shared
 -pkgdir dir
-    从指定位置，而不是通常的位置安装和加载所有软件包。例如，当使用非标准配置构建时，使用-pkgdir将生成的包保留在单独的位置
+    从指定位置，而不是通常的位置安装和加载所有软件包。例如，当使用非标准配置构建时，使用 -pkgdir 将生成的包保留在单独的位置
 -tags 'tag list'
-    构建出带tag的版本
+    构建出带 tag 的版本
 ```
 
 ## 跨平台编译
@@ -83,7 +83,7 @@ Go 提供了编译链工具，可以让我们在任何一个开发平台上，�
 编译跨平台的只需要修改 GOOS、GOARCH、CGO_ENABLED 三个环境变量即可：
 
 - GOOS：目标平台的操作系统（darwin、freebsd、linux、windows）；
-- GOARCH：目标平台的体系架构32位还是64位（386、amd64、arm）；
+- GOARCH：目标平台的体系架构 32 位还是 64 位（386、amd64、arm）；
 - 交叉编译不支持 CGO 所以要禁用它。
 
 **Window 环境下编译 Mac 和 Linux 64位可执行程序**
