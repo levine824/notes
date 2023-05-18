@@ -20,7 +20,7 @@ func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
 func Fprintln(w io.Writer, a ...interface{}) (n int, err error) 
 ```
 
-举例：
+示例：
 
 ```go
 // 向标准输出写入内容
@@ -45,7 +45,7 @@ func Sprintf(format string, a ...interface{}) string
 func Sprintln(a ...interface{}) string
 ```
 
-举例：
+示例：
 
 ```go
 s1 := fmt.Sprint("枯藤")
@@ -131,7 +131,7 @@ func Errorf(format string, a ...interface{}) error
 
 ### 宽度标识符
 
-宽度通过一个紧跟在百分号后面的十进制数指定，如果未指定宽度，则表示值时除必需之外不作填充。精度通过（可选的）宽度后跟点号后跟的十进制数指定。如果未指定精度，会使用默认精度；如果点号后没有跟数字，表示精度为0。举例如下
+宽度通过一个紧跟在百分号后面的十进制数指定，如果未指定宽度，则表示值时除必需之外不作填充。精度通过（可选的）宽度后跟点号后跟的十进制数指定。如果未指定精度，会使用默认精度；如果点号后没有跟数字，表示精度为0。
 
 | 占位符 | 说明               |
 | :----- | :----------------- |
@@ -184,7 +184,7 @@ func Scanln(a ...interface{}) (n int, err error)
 
 有时候我们想完整获取输入的内容，而输入的内容可能包含空格，这种情况下可以使用bufio包来实现。
 
-举例：
+示例：
 
 ```go
 func bufioDemo() {
