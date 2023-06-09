@@ -13,6 +13,8 @@
 
 # 命令详解
 
+![img](./asserts/git_2.png)
+
 ## 新建代码库
 
 ```shell

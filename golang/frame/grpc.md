@@ -290,12 +290,27 @@ message Foo {
 
 
 
-# 案例
+## 案例
+
+> 具体案例参考链接：[notes/protobuf.md at master · levine824/notes · GitHub](https://github.com/levine824/notes/blob/master/golang/frame/protobuf.md)
+>
 
 
 
+# 认证
 
+> 参考链接：[认证 - 地鼠文档 (topgoer.cn)](https://www.topgoer.cn/docs/golang/chapter16-7-7)
+
+# 拦截器
+
+> 参考链接：[拦截器 - 地鼠文档 (topgoer.cn)](https://www.topgoer.cn/docs/golang/chapter16-7-8)
+
+# Http 网关
+
+> 参考链接：[HTTP网关 - 地鼠文档 (topgoer.cn)](https://www.topgoer.cn/docs/golang/chapter16-7-10)
 
 # 参考链接
 
-[gRPC](https://grpc.io/)
+[1]: https://grpc.io/	"grpc 官方文档"
+[2]: https://www.topgoer.cn/docs/golang/chapter16-7	"grpc 介绍"
+
