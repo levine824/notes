@@ -2,7 +2,7 @@
 
 下图包含了 Git 常用命令：
 
-![在这里插入图片描述](D:\projects\github\notes\git\asserts\git_1.png)
+![img](../asserts/git_1.png)
 
 图中，涉及到四个名词：
 
@@ -13,7 +13,7 @@
 
 # 命令详解
 
-![img](./asserts/git_2.png)
+![img](../asserts/git_2.png)
 
 ## 新建代码库
 
@@ -306,5 +306,3 @@ git revert [commit]
 git stash
 git stash pop
 ```
-
-> 具体示例参考：[Git常用命令及方法大全_git命令_闯红灯的蜗牛的博客-CSDN博客](https://blog.csdn.net/m0_46168595/article/details/114839387)

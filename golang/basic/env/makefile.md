@@ -111,3 +111,36 @@ darwin:
 不必如此，我们可以在 Makefile 中编写一个“伪目标” help，用于描述 Makefile 中的“伪目标”列表和使用示例等。
 
 Make 命令运行时，如果不指定“目标”，默认执行 Makefile 文件的第一个“目标”。一般将 help 作为 Makefile 的第一个“伪目标”，我们可以执行 make 或 make help 命令，输出使用方法。
+
+# 案例
+
+```makefile
+# 使用 shell 脚本执行结果赋值变量
+GIT_REVISION 		:= $(shell git rev-parse --verify --short HEAD 2>/dev/null)
+COMPILE_TIME 		:= $(shell git log -1 --format="%ad" --date=short)
+
+# 声明伪目标
+.PHONY: help build clean setup-linux
+
+help:
+	@echo "usage  : make <option>"
+	@echo "options:"
+	@echo "    help         : Show help"
+	@echo "    build        : Build the binary of this project for current platform"
+	@echo "    clean        : Clean the workspace"
+	@echo "    setup-linux  : Install the necessary software on linux"
+
+build:
+	@skaffold build
+	@./build/shell/argocd_push.sh 'in ${GIT_REVISION} at ${COMPILE_TIME}'
+
+clean:
+	@./build/shell/clean.sh
+
+setup-linux:
+	@./build/shell/dev-setup-linux.sh
+
+clone-artifact:
+	@git -C artifact/argocd pull || git clone https://github.com/levine824/monorepo-argocd.git artifact/argocd
+```
+

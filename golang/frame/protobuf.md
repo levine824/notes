@@ -231,6 +231,22 @@ message HelloReply{
 }
 ```
 
+# F&Q
+
+1. 当使用单独的文件描述 http 接口时，不要使用 remote 插件，不然无法找到。
+
+```yaml
+plugins:
+  - plugin: gateway
+    out: api/gen/go
+    opt:
+      - paths=source_relative
+      - grpc_api_configuration=pong.yaml
+      - standalone=true
+```
+
+
+
 # 参考链接
 
 [1]: https://buf.build/docs	"buf 官方文档"
