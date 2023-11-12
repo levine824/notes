@@ -2,7 +2,7 @@
 
 GitOps = IaC + Git + CI/CD，即基于 IaC 的版本化 CI/CD。它的核心是使用 Git 仓库来管理基础设施和应用的配置，并且以 Git 仓库作为基础设施和应用的单一事实来源，你从其他地方修改配置（比如手动改线上配置）一概不予通过。
 
-![图片](../asserts/gitops_1.png)
+![gitops_1](..\assets\gitops_1.png)
 
 Git 仓库中的声明式配置描述了目标环境当前所需基础设施的期望状态，借助于 GitOps，如果集群的实际状态与 Git 仓库中定义的期望状态不匹配，Kubernetes reconcilers 会根据期望状态来调整当前的状态，最终使实际状态符合期望状态。
 
@@ -42,7 +42,7 @@ Git 仓库中的声明式配置描述了目标环境当前所需基础设施的�
 
 鉴于以上这些设计哲学，我们来看一下 GitOps 的工作流：
 
-![图片](../asserts/gitops_2.png)
+![gitops_2](..\assets\gitops_2.png)
 
 - 首先，团队中的任何一个成员都可以 Fork 仓库对配置进行更改，然后提交 Pull Request。
 - 接下来会运行 CI 流水线，一般会做这么几件事情：验证配置文件、执行自动化测试、检测代码的复杂性、构建 OCI 镜像、将镜像推送到镜像仓库等等。
@@ -59,7 +59,7 @@ CD 流水线有两种模式：Push 和 Pull。
 
 目前大多数 CI/CD 工具都使用基于 Push 的部署模式，例如 Jenkins、CircleCI 等。这种模式一般都会在 CI 流水线运行完成后执行一个命令（比如 kubectl）将应用部署到目标环境中。
 
-![图片](../asserts/gitops_3.png)
+![gitops_3](..\assets\gitops_3.png)
 
 这种 CD 模式的缺陷很明显：
 
@@ -74,7 +74,7 @@ Kubernetes 集群或者云平台对 CI 系统的授权凭证在集群或云平�
 
 Pull 模式会在目标环境中安装一个 Agent，例如在 Kubernetes 集群中就靠 Operator 来充当这个 Agent。Operator 会周期性地监控目标环境的实际状态，并与 Git 仓库中的期望状态进行比较，如果实际状态不符合期望状态，Operator 就会更新基础设施的实际状态以匹配期望状态。
 
-![图片](D:\projects\github\notes\asserts\gitops_4.png)
+![gitops_4](..\assets\gitops_4.png)
 
 只有 Git 的变更可以作为期望状态的唯一来源，除此之外，任何人都不可以对集群进行任何更改，即使你修改了，也会被 Operator 还原为期望状态，这也就是传说中的不可变基础设施。
 
@@ -108,7 +108,7 @@ GitOps 是对现有 DevOps 文化的补充，它使用 Git 这样的版本控制
 
 而且在 GitOps 中，整个系统都是通过声明式来描述的，天然适合云原生环境，因为 Kubernetes 也是这么设计的。
 
-# 参考链接
+# 参考
 
 [1]: GitOps的优势	"Argo CD"
 [2]: https://www.weave.works/technologies/gitops/	"Guide To GitOps"

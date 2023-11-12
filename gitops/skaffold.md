@@ -78,12 +78,68 @@ Getting Started With a New Project:
 # 案例
 
 ```yaml
-
+apiVersion: skaffold/v4beta7
+kind: Config
+metadata:
+  name: backend # 可以使用 -m 选项指定执行的 module
+build:
+  local:
+    push: false
+  artifacts:
+    - image: levine824/backend
+      ko:
+        #fromImage: gcr.io/distroless/base
+        dependencies:
+          paths:
+            - "app/backend"
+            - "pkg"
+        ldflags:
+          - "-s"
+          - "-w"
+          - "-X main.Version={{.VERSION}}"
+        main: ./app/backend/cmd
+      hooks:
+        after:
+          - command: [ "sh", "-c", "./hack/skaffold/hook.sh backend" ]
+            os: [ darwin, linux ]
+manifests:
+  rawYaml:
+    - ./hack/skaffold/backend.yaml
+deploy:
+  kubectl: { }
+---
+apiVersion: skaffold/v4beta7
+kind: Config
+metadata:
+  name: frontend
+build:
+  local:
+    push: false
+  artifacts:
+    - image: levine824/frontend
+      ko:
+        #fromImage: gcr.io/distroless/base
+        dependencies:
+          paths:
+            - "app/frontend"
+            - "pkg"
+        ldflags:
+          - "-s"
+          - "-w"
+          - "-X main.Version={{.VERSION}}"
+        main: ./app/frontend/cmd
+      hooks:
+        after:
+          - command: [ "sh", "-c", "./hack/skaffold/hook.sh frontend" ]
+            os: [ darwin, linux ]
+manifests:
+  rawYaml:
+    - ./hack/skaffold/frontend.yaml
+deploy:
+  kubectl: { }
 ```
 
-
-
-# 参考链接
+# 参考
 
 [1]: https://skaffold.dev/docs	"skaffold 官方文档"
 

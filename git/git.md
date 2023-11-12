@@ -2,7 +2,7 @@
 
 下图包含了 Git 常用命令：
 
-![img](../asserts/git_1.png)
+![img](../assets/git_1.png)
 
 图中，涉及到四个名词：
 
@@ -13,7 +13,7 @@
 
 # 命令详解
 
-![img](../asserts/git_2.png)
+![img](../assets/git_2.png)
 
 ## 新建代码库
 

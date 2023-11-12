@@ -2,7 +2,7 @@
 
 作为 Gopher，我们有官方提供的 go fmt 工具能够完成基础的格式调整（当然，这远远不够），开源社区里提供的各种 linter 还是非常多，而且有效的。
 
-这里也推荐一个 linter 列表 [1] ：
+这里也推荐一个 linter 列表 (具体参考[1]) ：
 
 - gofmt：Go SDK 自带的代码格式检查工具，用于检查缩进、文件尾是否有空行等。go fmt 命令（即：gofmt -l -w）可使用该工具格式化代码；
 - go vet：Go SDK 自带的可疑代码检查工具，检查 unsafe.Pointer 的错误使用、unreacheable code 等可能有问题的代码；
@@ -22,7 +22,7 @@ golangci-lint 是一个 Go linters aggregator，并不是一个 linter，其作�
 - 自带常用 linter，无需开发者再次安装；
 - 输出的问题有颜色区分，标识源码所在行以及出问题的标识符。
 
-感兴趣的同学也可以参考官方文档  [2]。
+感兴趣的同学也可以参考官方文档 (具体参考[2])。
 
 # 安装
 
@@ -224,7 +224,7 @@ func someLegacyFunction() *string {
 
 最后一个关键点，注意我们上面的 nolint 都是紧跟着 // 注释符号的，这也是 Go 的规范，机器识别的注释不应该有空格（开发者自己看的是需要加一个空格的）。
 
-# 参考链接
+# 参考
 
 [1]: https://github.com/golangci/awesome-go-linters	"go-linters"
 [2]: https://golangci-lint.run/usage/quick-start/	"golangci-lint 官方文档"

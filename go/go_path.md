@@ -4,12 +4,12 @@
 
 ## **适合个人开发者**
 
-![img](../../assets/gopath_1.png)
+![go_path_1](..\assets\go_path_1.png)
 
 ## **适合企业开发者**
 
-![img](../../assets/gopath_2.png)
+![go_path_2](..\assets\go_path_2.png)
 
 ## **目前流行结构**
 
-![img](../../assets/gopath_3.png)
+![go_path_3](..\assets\go_path_3.png)

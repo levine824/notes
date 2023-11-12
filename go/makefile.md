@@ -27,7 +27,7 @@ target ... : prerequisites ...
 target ... : prerequisites ...;command
 ```
 
-阅读上面示例代码，target 是目标文件，多个目标文件之间使用空格分隔，一般只有一个目标文件，也可以是“伪目标”(某个操作的名字); prerequisites 是先决条件;command 是“命令”，可以在 prerequisites 后面，使用分号分隔，也可以另起一行，但是必须以开头，如果想要使用其他键，可以使用内置变量 .RECIPEPREFIX 声明。
+阅读上面示例代码，target 是目标文件，多个目标文件之间使用空格分隔，一般只有一个目标文件，也可以是“伪目标”(某个操作的名字); prerequisites 是先决条件；command 是命令，可以在 prerequisites 后面，使用分号分隔，也可以另起一行，但是必须以开头，如果想要使用其他键，可以使用内置变量 .RECIPEPREFIX 声明。
 
 target 目标是必须的，不可省略。prerequisites 和 command 是可选的，但是二者必须存在其一。
 
@@ -53,13 +53,13 @@ build: go build -o blog
 APP=blog
 
 build:
-        @go build -o ${APP}
+        @go build -o $(APP)
 windows:
-        @GOOS=windows go build -o ${APP}-windows
+        @GOOS=windows go build -o $(APP)-windows
 linux:
-        @GOOS=linux go build -o ${APP}-linux
+        @GOOS=linux go build -o $(APP)-linux
 darwin:
-        @GOOS=darwin go build -o ${APP}-darwin
+        @GOOS=darwin go build -o $(APP)-darwin
 ```
 
 阅读上面示例代码，我们定义一个自定义变量 APP，在命令行中使用 $(APP) 调用变量，并且 GOOS 指定操作系统，使用@开头，不再打印执行命令。
@@ -95,15 +95,15 @@ help:
         @echo "    windows: Build the windows binary of this project"
         @echo "    linux  : Build the linux binary of this project"
         @echo "    darwin : Build the darwin binary of this project"
-all:build windows linux darwin
+all: build windows linux darwin
 build:
-        @go build -o ${APP}
+        @go build -o $(APP)
 windows:
-        @GOOS=windows go build -o ${APP}-windows
+        @GOOS=windows go build -o $(APP)-windows
 linux:
-        @GOOS=linux go build -o ${APP}-linux
+        @GOOS=linux go build -o $(APP)-linux
 darwin:
-        @GOOS=darwin go build -o ${APP}-darwin
+        @GOOS=darwin go build -o $(APP)-darwin
 ```
 
 细心的读者朋友们阅读到此处，心中可能会有一个疑问，想要知道 Makefile 中包含哪些“目标”，必须查看 Makefile 文件吗?

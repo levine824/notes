@@ -9,7 +9,7 @@
 1. Feature Branch 和 Trunk-based 工作流是比较新晋的概念，二者是相对的、互斥的，它们组成一个全集；
 2. Git flow、Gilab flow 和 Github flow 都属于 Feature Branch Development，它们有一个共同点：都采用『功能驱动式开发』，即：需求是开发的起点，先有需求再有功能分支或者补丁分支。
 
-![git_flow_1](..\asserts\git_flow_1.png)
+![git_flow_1](..\assets\git_flow_1.png)
 
 # 适用场景
 
@@ -19,7 +19,7 @@
 
 **总的来说，选择一个工作流不仅仅是一系列操作工具的流程，我们往往还需要对它背后的思想买单；下面的表格是两种工作流模式在各个维度的适用情况：**
 
-![git_flow_2](..\asserts\git_flow_2.png)
+![git_flow_2](..\assets\git_flow_2.png)
 
 # Feature Branch Development
 
@@ -31,7 +31,7 @@
 
 ## Git Flow
 
-![git_flow_3](..\asserts\git_flow_3.png)
+![git_flow_3](..\assets\git_flow_3.png)
 
 Git 的分支主要分为两个长期分支 master 、develop ；三个短期分支 hotfix 、release 和 feature。
 
@@ -110,7 +110,7 @@ GitHub Flow 通常只有一个 Master 分支是固定的，而且 GitHub Flow中
 
 GitHub Flow 只有 master 和 feature 分支，相当于把 master 和 develop 分支的作用进行了合并，模型图如下：
 
-![git_flow_4](..\asserts\git_flow_4.png)
+![git_flow_4](..\assets\git_flow_4.png)
 
 GitHub Flow 简化了分支的管理，转而使用 PR（Pull request）的方式解决代码的合并。
 
@@ -134,7 +134,7 @@ Trunk-based Development：所有研发人员围绕主分支 trunk (也就是 git
 
 Trunk-based Development 的目的在于解决合并和持续构建的问题。下图展示了采用 Trunk-based development 来进行软件研发时所涉及的一系列活动：
 
-![git_flow_5](..\asserts\git_flow_5.png)
+![git_flow_5](..\assets\git_flow_5.png)
 
 上图规定了以下规则：
 
@@ -214,7 +214,7 @@ github 提供了大多数功能给开发者使用，这些功能有：账号管�
 
 通过以上思路便可以在 github 上创建一个高效的基于 Trunk-Based Development 的 CI 流程，如下图所示：
 
-![git_flow_7](..\asserts\git_flow_7.png)
+![git_flow_7](..\assets\git_flow_7.png)
 
 # 结论
 
