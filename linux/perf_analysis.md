@@ -1,3 +1,9 @@
+![perf_analysis_1](../assets/perf_analysis_1.png)
+
+![perf_analysis_2](../assets/perf_analysis_2.png)
+
+![perf_analysis_3](../assets/perf_analysis_3.png)
+
 # 参考资料
 
 [1]: https://blog.csdn.net/u012343977/article/details/128007262	"性能分析命令详解"
