@@ -1310,13 +1310,13 @@ undo log存储：undo log采用段的方式进行管理和记录，存放在roll
 
 #### MVCC
 
-全称Multi-Version Concurrency Control，多版本并发控制。只维护一个数据的多个版本，使得读写操作没有冲突，快照读为MySQL实现MVCC提供了一个非阻塞读的功能。MVCC的具体实现，还需要依赖于数据库记录中的三个隐式字段、undo log日志和readView。
+全称 Multi-Version Concurrency Control，多版本并发控制。只维护一个数据的多个版本，使得读写操作没有冲突，快照读为 MySQL 实现 MVCC 提供了一个非阻塞读的功能。MVCC 的具体实现，还需要依赖于数据库记录中的三个隐式字段、undo log 日志和 readView。
 
 
 
 当前读
 
-读取的记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁。如：select ... locj in share mode、select  ... for update、update、insert、delete都是一种当前读。 
+读取的记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁。如：select ... locj in share mode、select  ... for update、update、insert、delete 都是一种当前读。 
 
 
 
@@ -1324,52 +1324,52 @@ undo log存储：undo log采用段的方式进行管理和记录，存放在roll
 
 简单的select就是快照读，读取的是记录数据的可见版本，有可能是历史数据，不加锁，是非阻塞读。
 
-- Read Committed：每次select，都生成一个快照读；
-- Repeatable Read：开启事务后第一个select语句才是快照读的地方；
+- Read Committed：每次 select，都生成一个快照读；
+- Repeatable Read：开启事务后第一个 select 语句才是快照读的地方；
 - Serializable：快照读退化为当前读。
 
 ##### 记录中的隐藏字段
 
-DB_TRX_ID：最近修改的事务ID，记录插入这条记录或者最后一次修改记录的事务ID；
+DB_TRX_ID：最近修改的事务 ID，记录插入这条记录或者最后一次修改记录的事务 ID；
 
-DB_ROLL_PTR：回滚指针，执行这条记录的上一个版本，用于配合undo log，指向上一个版本；
+DB_ROLL_PTR：回滚指针，执行这条记录的上一个版本，用于配合 undo log，指向上一个版本；
 
 DB_ROW_ID：隐藏主键，如果表中没有指定主键，将会生成该隐藏字段。
 
 ##### undo log
 
-回滚日志，在insert、update、delete的时候产生的便于数据回滚的日志。
+回滚日志，在 insert、update、delete 的时候产生的便于数据回滚的日志。
 
-当insert的时候，产生的undo log日志只在回滚时需要，在事务提交后，可被立即删除。
+当 insert 的时候，产生的 undo log 日志只在回滚时需要，在事务提交后，可被立即删除。
 
-而update、delete的时候，产生的undo log日志不仅在回滚时需要，在快照读时也需要，不会被立即删除。
+而 update、delete 的时候，产生的 undo log 日志不仅在回滚时需要，在快照读时也需要，不会被立即删除。
 
-###### undo log版本链
+###### undo log 版本链
 
-不同事务或相同事务对同一条记录进行修改，会导致该记录的undo log生成一条记录版本链表，链表头部是最新的旧记录，链表尾部是最早的旧记录。
+不同事务或相同事务对同一条记录进行修改，会导致该记录的 undo log 生成一条记录版本链表，链表头部是最新的旧记录，链表尾部是最早的旧记录。
 
 ##### readview
 
-ReadView是快照读SQL执行时MVCC提取数据的依据，记录并维护系统当前活跃的事务（未提交）id。
+ReadView 是快照读 SQL 执行时 MVCC 提取数据的依据，记录并维护系统当前活跃的事务（未提交）id。
 
 ReadView中包含了四个核心字段：
 
-- m_ids：当前活跃事务ID集合；
-- min_trx_id：最小活跃事务ID；
-- max_trx_id：预分配事务ID，当前最大事务ID+1（因为事务ID是自增的）；
-- creator_trx_id：ReadView创建者的事务ID。
+- m_ids：当前活跃事务 ID 集合；
+- min_trx_id：最小活跃事务 ID；
+- max_trx_id：预分配事务 ID，当前最大事务 ID+1（因为事务ID是自增的）；
+- creator_trx_id：ReadView 创建者的事务 ID。
 
 版本链数据访问规则：
 
-1. trx_id == creator_trx_id？可以访问该版本；
-2. trx_id<min_trx_id？可以访问该版本；
-3. trx_id>max_trx_id？不可以访问该版本；
-4. min_trx_id<=trx_id<=max_trx_id？如果trx_id不在m_ids中是可以访问该版本的。
+1. trx_id == creator_trx_id ? 可以访问该版本；
+2. trx_id<min_trx_id ? 可以访问该版本；
+3. trx_id>max_trx_id ? 不可以访问该版本；
+4. min_trx_id<=trx_id<=max_trx_id ? 如果trx_id不在m_ids中是可以访问该版本的。
 
-不同的隔离级别，生成ReadView的时机不同：
+不同的隔离级别，生成 ReadView 的时机不同：
 
-- READ COMMITTED：在事务中每一次执行快照读时生成ReadView；
-- REPEATABLE READ：仅在事务中第一次执行快照读时生成ReadView，后续复用该ReadView。
+- READ COMMITTED：在事务中每一次执行快照读时生成 ReadView；
+- REPEATABLE READ：仅在事务中第一次执行快照读时生成 ReadView，后续复用该 ReadView。
 
 ### MySQL管理
 
