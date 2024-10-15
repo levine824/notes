@@ -992,7 +992,7 @@ bash shell 的配置文件很多，可以分成以下类别：
 /etc/profile.d/*.sh 
 /etc/bashrc 
 /etc/profile
-/etc/bashrc
+/etc/bash_profile
 .bashrc 
 .bash_profile
 ```
