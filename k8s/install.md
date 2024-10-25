@@ -2,7 +2,7 @@
 
 ## 架构图
 
-![img](../images/1805318-20200802132335968-769331513.png)
+![img](../assets/k8s_install_1.png)
 
 本文采用三台主机作为master节点，通过haproxy和keepalived实现apiserver的负载均衡，达到高可用的目的。
 
@@ -495,4 +495,8 @@ kubectl get pods --all-namespaces
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
+
+# 参考链接
+
+[1]: https://www.yuque.com/fairy-era/yg511q/wuhwio	"k8s 1.21 安装"
 
